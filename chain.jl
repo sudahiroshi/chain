@@ -1,6 +1,8 @@
 using SHA
 old_hash = ""
-data = "ogino: 10000\nmiyamizu: 10000\n"
+data = "ogino: 10000
+miyamizu: 10000
+"
 zeros = 6
 start = 0
 for nonce in start:start+100000000
