@@ -1,14 +1,17 @@
-#import Pkg
-#Pkg.add("MD5")
-using MD5
+using SHA
 old_hash = ""
-data = "ogino: 10000\nmiyamizu: 10000"
+data = "ogino: 10000\nmiyamizu: 10000\n"
 zeros = 6
 start = 0
-for nonce in start:start+10000000
+for nonce in start:start+100000000
   base = old_hash * data * string(nonce)
-  hash = base |> md5 |> bytes2hex
+  hash = base |> sha2_256 |> bytes2hex
   if( hash[1:zeros] == "0" ^ zeros )
     string(nonce) * " : " * hash |> println
+    break
+  end
+  if( nonce%1000000 == 0 )
+     nonce |> string |> println
   end
 end
+
